@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>For You, Abinaya ❤️</title>
+  <style>
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ead1dc;
+      color: #442633;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .cover {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      background: radial-gradient(circle at 50% 40%, #7d174b 0%, #410a2d 30%, #180713 63%, #050307 100%);
+      transition: 1s ease;
+    }
+
+    .cover.hide {
+      opacity: 0;
+      transform: scale(1.04);
+      pointer-events: none
+    }
+
+    .cover::before {
+      content: "";
+      position: absolute;
+      width: 75vw;
+      height: 75vw;
+      max-width: 650px;
+      max-height: 650px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #d83b7e66 0%, #70134233 40%, transparent 70%);
+      filter: blur(18px);
+    }
+
+    .cover-content {
+      position: relative;
+      z-index: 2
+    }
+
+    .cover h1 {
+      margin: 0;
+      color: #ffe0ec;
+      font-family: "Brush Script MT", "Segoe Script", cursive;
+      font-size: clamp(44px, 12vw, 78px);
+      text-shadow: 0 10px 35px #000;
+    }
+
+    .cover p {
+      margin: 8px 0 25px;
+      color: #e8b6cc;
+      font-size: 12px;
+      letter-spacing: 2.5px
+    }
+
+    .open-btn {
+      border: 1px solid #f6b5d0;
+      border-radius: 999px;
+      padding: 14px 29px;
+      color: #fff;
+      background: linear-gradient(135deg, #a82f66, #5d1039);
+      font-family: Georgia, serif;
+      font-size: 16px;
+      font-weight: bold;
+      box-shadow: 0 10px 35px #000, 0 0 25px #b82e70aa;
+      cursor: pointer;
+    }
+
+    .wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: .7s ease
+    }
+
+    .wrap.show {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    .book {
+      position: relative;
+      width: min(94vw, 430px);
+      height: 92vh
+    }
+
+    .page {
+      position: absolute;
+      inset: 0;
+      padding: 27px 22px 58px;
+      overflow: hidden;
+      border: 1px solid #d7c8ad;
+      border-radius: 4px;
+      background: radial-gradient(circle at 20% 15%, #ffffffaa 0 1px, transparent 2px), linear-gradient(135deg, #fffdf5, #f8f0df);
+      box-shadow: 0 16px 45px #54243b55, inset 0 0 35px #c8aa7220;
+      transition: .65s ease;
+    }
+
+    .page2 {
+      transform: translateX(105%);
+      opacity: 0
+    }
+
+    .page1.flip {
+      transform: translateX(-105%);
+      opacity: 0;
+      pointer-events: none
+    }
+
+    .page2.show {
+      transform: translateX(0);
+      opacity: 1
+    }
+
+    .page-title {
+      margin: 0 0 15px;
+      text-align: center;
+      color: #8b3158;
+      font-family: "Brush Script MT", "Segoe Script", cursive;
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .letter {
+      height: calc(100% - 47px);
+      overflow: hidden;
+      text-align: left;
+      font-size: 13.7px;
+      line-height: 1.34
+    }
+
+    .para {
+      margin: 0 0 8px;
+      opacity: 0;
+      transform: translateY(7px)
+    }
+
+    .para.show {
+      animation: fadeIn 1.1s ease forwards
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .nav {
+      position: absolute;
+      left: 50%;
+      bottom: 10px;
+      transform: translateX(-50%);
+      z-index: 5;
+      border: 0;
+      border-radius: 999px;
+      padding: 9px 14px;
+      color: #fff;
+      background: linear-gradient(135deg, #a32e62, #762149);
+      font-family: Georgia, serif;
+      font-size: 12px;
+      font-weight: bold;
+      box-shadow: 0 6px 18px #7d234f55;
+      cursor: pointer;
+    }
+
+    .nav.back {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+    }
+
+    @media(max-width:380px) {
+      .book {
+        width: 95vw;
+        height: 92vh
+      }
+
+      .page {
+        padding: 23px 17px 55px
+      }
+
+      .page-title {
+        font-size: 30px;
+        margin-bottom: 12px
+      }
+
+      .letter {
+        font-size: 12.4px;
+        line-height: 1.27
+      }
+
+      .para {
+        margin-bottom: 6px
+      }
+    }
+
+    @media(max-height:650px) {
+      .book {
+        height: 91vh
+      }
+
+      .page {
+        padding: 19px 17px 53px
+      }
+
+      .page-title {
+        font-size: 28px;
+        margin-bottom: 9px
+      }
+
+      .letter {
+        font-size: 11.8px;
+        line-height: 1.22
+      }
+
+      .para {
+        margin-bottom: 5px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cover" id="cover">
+    <div class="cover-content">
+      <h1>For You, Abinaya</h1>
+      <p>A LITTLE LETTER FROM MY HEART</p>
+      <div class="cover-rose">🌹</div>
+      <button class="open-btn" onclick="openCard()">Tap to Open 💌</button>
+    </div>
+  </div>
+
+  <div class="wrap" id="wrap">
+    <div class="book">
+
+      <section class="page page1" id="page1">
+        <h2 class="page-title">For You… 🌹</h2>
+        <div class="letter" id="text1"></div>
+        <button class="nav" onclick="nextPage()">Next Page ➜</button>
+      </section>
+
+      <section class="page page2" id="page2">
+        <h2 class="page-title">One More Thing… ❤️</h2>
+        <div class="letter" id="text2"></div>
+        <button class="nav back" onclick="prevPage()">← Back</button>
+      </section>
+
+    </div>
+  </div>
+
+  <audio id="bgMusic" preload="auto">
+    <source src="kavin.mp4" type="audio/mpeg">
+  </audio>
+
+  <script>
+    /* PAGE 1 ends exactly at "And namma chat-la..." */
+    const page1 = [
+      `Unnoda ella kashtamum enakku theriyum diii…<br>
+Aana, ennala unna vittu poga thonala. ❤️`,
+
+      `Nee annikku sonnala…<br>
+<strong>Naan unlucky girl </strong> nu.`,
+
+      `Aana enakku nee kidaichadhu dhaan,<br>
+en life la kidaicha oru lucky thing diii. 🌹`,
+
+      `Sila neram unakku,<br>
+Yaarume ennai purinjikala…<br>
+Yaarukkum ennai pudikkala…<br>
+nu thonalaam…`,
+
+      `Aana,<br>
+unnoda feelings ah judge panna illa…<br>
+<strong>Unna crt panna kooda varala.</strong> 😂`,
+
+      `Unnai purinjikkanum nu dhaan enakku aasai. ❤️`,
+
+      `Un happiness ah celebrate panna aasai 🤌🏻<br>
+Un sadness la konjam company kudukka aasai 🌹<br>
+And sometimes reason illama unna kalaaichitu irukkanum nu kooda aasai. 🤣❤️`,
+
+      `Nee unlucky girl illa diii…<br><br>
+<strong>Enakku kidaicha lucky girl.</strong> ❤️`
+    ];
+
+    const page2 = [
+      `And namma chat la…`,
+
+      `Kiss, romantic kavithai, love nu<br>
+enna ennamo pesuvom laa… 😂❤️`,
+
+      `Aana real life la vandha…`,
+
+      `<strong>Un permission illama,</strong><br>
+<strong>un nail ha kooda cut panna maaten diii!</strong> 🤣💅🏻❤️`,
+
+      `Chat la naan romba bold uh… 😌<br>
+Real life la…<br><br>
+<strong>Madam… permission please?</strong> 😂<br><br>
+nu nikkira type. 🤣❤️`,
+
+      `So, andha romantic kavidhai ku<br>
+<strong>idhu dhaan enoda cute aana reply.</strong> ❤️🌹`,
+
+      `So Abii Kutty…`,
+
+      `Nee unlucky girl illa.`,
+
+      `<strong>Nee lucky…</strong><br>
+<strong>becz you got me.</strong> 😌❤️`,
+
+      `And naanum lucky…`,
+
+      `<strong>becz I got you.🌹🫶🏻<br> And<br> Happy Birthday Abii Kutty🤌🏻❤️🌹<br><br>song nalla iruntha full ha kettutu chat ku va</strong> `,
+    ];
+
+    function build(id, data) {
+      const box = document.getElementById(id);
+      data.forEach(t => {
+        const p = document.createElement("div");
+        p.className = "para";
+        p.innerHTML = t;
+        box.appendChild(p);
+      });
+    }
+
+    function reveal(id) {
+      document.querySelectorAll("#" + id + " .para").forEach((p, i) => {
+        setTimeout(() => p.classList.add("show"), i * 400);
+      });
+    }
+
+    function openCard() {
+      document.getElementById("cover").classList.add("hide");
+      document.getElementById("wrap").classList.add("show");
+
+      const music = document.getElementById("bgMusic");
+      music.volume = .17;
+      music.currentTime = 0;
+      music.play().catch(() => { });
+
+      setTimeout(() => reveal("text1"), 150);
+    }
+
+    function nextPage() {
+      document.getElementById("page1").classList.add("flip");
+      document.getElementById("page2").classList.add("show");
+      setTimeout(() => reveal("text2"), 450);
+    }
+
+    function prevPage() {
+      document.getElementById("page2").classList.remove("show");
+      document.getElementById("page1").classList.remove("flip");
+    }
+
+    build("text1", page1);
+    build("text2", page2);
+  </script>
+</body>
+
+</html>

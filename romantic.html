@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>For You, Abinaya ❤️</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&family=Noto+Serif+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      position: relative;
+      min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at 50% 42%,
+          rgba(255, 190, 190, 0.18),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 15% 20%,
+          rgba(255, 215, 160, 0.10),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 85% 80%,
+          rgba(190, 120, 180, 0.14),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #6d274f 0%,
+          #83335c 35%,
+          #77304f 65%,
+          #5f2949 100%
+        );
+
+      color: #fff;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-family: "Montserrat", sans-serif;
+    }
+
+
+    /* Soft center glow */
+
+    body::before {
+      content: "";
+
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      left: 50%;
+      top: 42%;
+
+      transform: translate(-50%, -50%);
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255, 214, 214, 0.12),
+          transparent 68%
+        );
+
+      filter: blur(20px);
+
+      pointer-events: none;
+    }
+
+
+    /* Golden corner glow */
+
+    body::after {
+      content: "";
+
+      position: absolute;
+
+      width: 320px;
+      height: 320px;
+
+      right: -150px;
+      bottom: -150px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255, 205, 120, 0.14),
+          transparent 70%
+        );
+
+      filter: blur(10px);
+
+      pointer-events: none;
+    }
+
+
+    /* =========================
+       STARS
+    ========================= */
+
+    .stars {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+
+      width: 3px;
+      height: 3px;
+
+      border-radius: 50%;
+
+      background: rgba(255, 240, 230, 0.75);
+
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    .star:nth-child(1) {
+      left: 12%;
+      top: 13%;
+      animation-delay: 0s;
+    }
+
+    .star:nth-child(2) {
+      left: 76%;
+      top: 11%;
+      animation-delay: 1s;
+    }
+
+    .star:nth-child(3) {
+      left: 89%;
+      top: 34%;
+      animation-delay: 2s;
+    }
+
+    .star:nth-child(4) {
+      left: 8%;
+      top: 57%;
+      animation-delay: 1.5s;
+    }
+
+    .star:nth-child(5) {
+      left: 91%;
+      top: 70%;
+      animation-delay: 0.7s;
+    }
+
+    .star:nth-child(6) {
+      left: 18%;
+      top: 82%;
+      animation-delay: 2.2s;
+    }
+
+    .star:nth-child(7) {
+      left: 67%;
+      top: 88%;
+      animation-delay: 1.2s;
+    }
+
+    .star:nth-child(8) {
+      left: 43%;
+      top: 8%;
+      animation-delay: 2.7s;
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 0.25;
+        transform: scale(0.7);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.5);
+      }
+
+    }
+
+
+    /* =========================
+       FALLING PETALS
+    ========================= */
+
+    .petals {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .petal {
+      position: absolute;
+
+      top: -30px;
+
+      font-size: 16px;
+
+      opacity: 0.55;
+
+      animation: fall linear infinite;
+    }
+
+    .petal:nth-child(1) {
+      left: 8%;
+      animation-duration: 9s;
+      animation-delay: 0s;
+    }
+
+    .petal:nth-child(2) {
+      left: 25%;
+      animation-duration: 12s;
+      animation-delay: 3s;
+    }
+
+    .petal:nth-child(3) {
+      left: 48%;
+      animation-duration: 10s;
+      animation-delay: 1s;
+    }
+
+    .petal:nth-child(4) {
+      left: 72%;
+      animation-duration: 13s;
+      animation-delay: 5s;
+    }
+
+    .petal:nth-child(5) {
+      left: 90%;
+      animation-duration: 11s;
+      animation-delay: 2s;
+    }
+
+    @keyframes fall {
+
+      0% {
+        transform:
+          translateY(-40px)
+          rotate(0deg);
+
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.55;
+      }
+
+      90% {
+        opacity: 0.40;
+      }
+
+      100% {
+        transform:
+          translateY(110vh)
+          rotate(360deg);
+
+        opacity: 0;
+      }
+
+    }
+
+
+    /* =========================
+       MAIN PAGE
+    ========================= */
+
+    .page {
+      position: relative;
+
+      z-index: 5;
+
+      width: 100%;
+      max-width: 720px;
+
+      height: 100vh;
+      min-height: 100vh;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px 18px;
+
+      text-align: center;
+    }
+
+
+    /* =========================
+       TOP LABEL
+    ========================= */
+
+    .top-label {
+
+      font-size: 10px;
+
+      letter-spacing: 4px;
+
+      color: rgba(255, 235, 235, 0.70);
+
+      margin-bottom: 10px;
+
+      text-transform: uppercase;
+
+      animation:
+        fadeDown 1s ease forwards;
+    }
+
+    @keyframes fadeDown {
+
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+
+    /* =========================
+       ROSE
+    ========================= */
+
+    .rose {
+
+      font-size: 28px;
+
+      margin-bottom: 12px;
+
+      animation:
+        floatRose 3s ease-in-out infinite;
+
+      filter:
+        drop-shadow(
+          0 5px 12px
+          rgba(255, 120, 120, 0.22)
+        );
+    }
+
+    @keyframes floatRose {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-6px);
+      }
+
+    }
+
+
+    /* =========================
+       POEM
+    ========================= */
+
+    .poem {
+
+      width: 100%;
+
+      max-width: 680px;
+    }
+
+    .line {
+
+      font-family:
+        "Noto Serif Tamil",
+        serif;
+
+      font-size:
+        clamp(16px, 2.5vw, 21px);
+
+      line-height: 1.48;
+
+      font-weight: 500;
+
+      color:
+        rgba(255, 248, 248, 0.96);
+
+      opacity: 0;
+
+      transform:
+        translateY(15px);
+
+      animation:
+        lineIn 0.9s ease forwards;
+
+      text-shadow:
+        0 2px 15px
+        rgba(30, 0, 20, 0.18);
+    }
+
+
+    /* Animation timing */
+
+    .line:nth-child(1) {
+      animation-delay: 0.3s;
+    }
+
+    .line:nth-child(2) {
+      animation-delay: 0.9s;
+    }
+
+    .line:nth-child(3) {
+      animation-delay: 1.5s;
+    }
+
+    .line:nth-child(4) {
+      animation-delay: 2.1s;
+    }
+
+    .line:nth-child(5) {
+      animation-delay: 2.7s;
+    }
+
+    .line:nth-child(6) {
+      animation-delay: 3.3s;
+    }
+
+
+    @keyframes lineIn {
+
+      from {
+        opacity: 0;
+        transform:
+          translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform:
+          translateY(0);
+      }
+
+    }
+
+
+    /* =========================
+       VIDEO BUTTON
+    ========================= */
+
+    .next-btn {
+
+      margin-top: 20px;
+
+      width:
+        min(340px, 88%);
+
+      padding: 12px 22px;
+
+      border-radius: 40px;
+
+      border:
+        1px solid
+        rgba(255, 220, 220, 0.28);
+
+      background:
+        rgba(255, 255, 255, 0.10);
+
+      color:
+        rgba(255, 248, 248, 0.95);
+
+      text-decoration: none;
+
+      font-family:
+        "Montserrat",
+        sans-serif;
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+      letter-spacing: 0.3px;
+
+      backdrop-filter:
+        blur(10px);
+
+      -webkit-backdrop-filter:
+        blur(10px);
+
+      box-shadow:
+        0 8px 25px
+        rgba(40, 5, 25, 0.16),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.14);
+
+      opacity: 0;
+
+      animation:
+        buttonIn 1s ease 4.5s forwards;
+
+      transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .next-btn:hover {
+
+      transform:
+        translateY(-3px)
+        scale(1.02);
+
+      background:
+        rgba(255, 255, 255, 0.16);
+
+      box-shadow:
+        0 12px 32px
+        rgba(40, 5, 25, 0.22),
+
+        0 0 20px
+        rgba(255, 190, 190, 0.10);
+    }
+
+    .next-btn:active {
+
+      transform:
+        scale(0.98);
+    }
+
+    @keyframes buttonIn {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
+
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
+
+      .page {
+
+        padding:
+          15px 13px;
+      }
+
+      .top-label {
+
+        font-size: 9px;
+
+        letter-spacing: 3.5px;
+
+        margin-bottom: 8px;
+      }
+
+      .rose {
+
+        font-size: 25px;
+
+        margin-bottom: 8px;
+      }
+
+      .line {
+
+        font-size:
+          clamp(15px, 3.9vw, 18px);
+
+        line-height: 1.45;
+      }
+
+      .next-btn {
+
+        margin-top: 14px;
+
+        padding:
+          10px 18px;
+
+        font-size: 12px;
+      }
+
+    }
+
+
+    /* =========================
+       SMALL HEIGHT PHONES
+    ========================= */
+
+    @media (max-height: 700px) {
+
+      .page {
+
+        padding:
+          8px 12px;
+      }
+
+      .top-label {
+
+        margin-bottom: 5px;
+      }
+
+      .rose {
+
+        font-size: 23px;
+
+        margin-bottom: 5px;
+      }
+
+      .line {
+
+        font-size: 15px;
+
+        line-height: 1.35;
+      }
+
+      .next-btn {
+
+        margin-top: 8px;
+
+        padding:
+          8px 17px;
+
+        font-size: 11px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- STARS -->
+
+  <div class="stars">
+
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+
+  </div>
+
+
+  <!-- FALLING PETALS -->
+
+  <div class="petals">
+
+    <span class="petal">🌹</span>
+    <span class="petal">🌸</span>
+    <span class="petal">🌹</span>
+    <span class="petal">🌸</span>
+    <span class="petal">🌹</span>
+
+  </div>
+
+
+  <!-- AUTOMATIC MUSIC -->
+
+  <audio
+    id="music"
+    loop
+    preload="auto">
+
+    <source
+      src="kavi.mpeg"
+      type="audio/mpeg">
+
+  </audio>
+
+
+  <!-- MAIN CONTENT -->
+
+  <main class="page">
+
+
+    <div class="top-label">
+      A LITTLE ROMANTIC POEM FOR YOU
+    </div>
+
+
+    <div class="rose">
+      🌹
+    </div>
+
+
+    <!-- POEM -->
+
+    <div class="poem">
+
+
+      <div class="line">
+        நீ அனுப்பிய ஒவ்வொரு “Oo”க்கும்
+      </div>
+
+
+      <div class="line">
+        ஒரு முத்தம் கொடுத்திருந்தால்… 😘
+      </div>
+
+
+      <div class="line">
+        இன்று வரை நீ அனுப்பிய “Oo”களுக்கெல்லாம்
+      </div>
+
+
+      <div class="line">
+        என் முத்தங்கள் கணக்கே இல்லாமல் போயிருக்கும்… ❤️‍🔥
+      </div>
+
+
+      <div class="line">
+        இப்படி “Oo” அனுப்பிக்கிட்டே இருந்தா,
+      </div>
+
+
+      <div class="line">
+        முத்தங்கள் மட்டும் போதுமா என்ன…? 🫠❤️‍🔥
+      </div>
+
+
+    </div>
+
+
+    <!-- VIDEO BUTTON -->
+
+    <a
+      href="video.html"
+      class="next-btn">
+
+      🎬 Click For Video
+
+      <span style="margin-left: 6px;">
+        →
+      </span>
+
+    </a>
+
+
+  </main>
+
+
+  <script>
+
+    const music =
+      document.getElementById("music");
+
+
+    /* =========================
+       AUTOMATIC MUSIC
+    ========================= */
+
+    function startMusic() {
+
+      music.volume = 0.42;
+
+      music.play().catch(() => {
+        console.log(
+          "Autoplay blocked. Waiting for user interaction."
+        );
+      });
+
+    }
+
+
+    /* =========================
+       FIRST CLICK
+       Automatically starts music
+    ========================= */
+
+    document.addEventListener(
+      "click",
+      function firstInteraction() {
+
+        if (music.paused) {
+
+          music.volume = 0.42;
+
+          music.play().catch(() => {});
+
+        }
+
+      },
+      { once: true }
+    );
+
+
+    /* =========================
+       FIRST TOUCH
+       Automatically starts music
+    ========================= */
+
+    document.addEventListener(
+      "touchstart",
+      function firstTouch() {
+
+        if (music.paused) {
+
+          music.volume = 0.42;
+
+          music.play().catch(() => {});
+
+        }
+
+      },
+      { once: true }
+    );
+
+
+    /* Try autoplay */
+
+    window.addEventListener(
+      "load",
+      startMusic
+    );
+
+  </script>
+
+
+</body>
+</html>

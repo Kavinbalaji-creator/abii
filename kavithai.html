@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For Abinaya✨</title>
+
+
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+        /* =================================================
+           RESET
+        ================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+        }
+
+
+        /* =================================================
+           BODY
+        ================================================= */
+
+        body {
+
+            min-height: 100vh;
+
+            position: relative;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            overflow: hidden;
+
+            color: #fff7fa;
+
+            font-family:
+                "Noto Serif Tamil",
+                serif;
+
+            background:
+
+                radial-gradient(circle at 15% 15%,
+                    rgba(255, 126, 166, 0.30),
+                    transparent 30%),
+
+                radial-gradient(circle at 85% 15%,
+                    rgba(186, 119, 255, 0.25),
+                    transparent 32%),
+
+                radial-gradient(circle at 50% 90%,
+                    rgba(255, 184, 92, 0.16),
+                    transparent 35%),
+
+                linear-gradient(135deg,
+                    #421a3e 0%,
+                    #682343 35%,
+                    #743052 62%,
+                    #3d1a46 100%);
+        }
+
+
+        /* =================================================
+           SOFT CENTER GLOW
+        ================================================= */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 520px;
+            height: 520px;
+
+            left: 50%;
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            background:
+
+                radial-gradient(circle,
+                    rgba(255, 178, 198, 0.14),
+                    rgba(220, 90, 150, 0.05),
+                    transparent 70%);
+
+            filter:
+                blur(30px);
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+
+        /* =================================================
+           GOLD CORNER LIGHT
+        ================================================= */
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 240px;
+            height: 240px;
+
+            right: -80px;
+            bottom: -70px;
+
+            background:
+                rgba(255, 205, 115, 0.13);
+
+            filter:
+                blur(55px);
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+
+        /* =================================================
+           STARS
+        ================================================= */
+
+        .stars {
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 1;
+        }
+
+
+        .star {
+
+            position: absolute;
+
+            width: 3px;
+            height: 3px;
+
+            border-radius: 50%;
+
+            background:
+                #ffe9c8;
+
+            box-shadow:
+
+                0 0 5px rgba(255, 229, 190, 0.95),
+
+                0 0 12px rgba(255, 180, 120, 0.45);
+
+            animation:
+                twinkle 3s ease-in-out infinite;
+        }
+
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+
+                opacity: 0.25;
+
+                transform:
+                    scale(0.7);
+            }
+
+            50% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1.6);
+            }
+        }
+
+
+        /* =================================================
+           FLOATING PETALS
+        ================================================= */
+
+        .petal {
+
+            position: fixed;
+
+            top: -30px;
+
+            pointer-events: none;
+
+            z-index: 2;
+
+            opacity: 0;
+
+            animation:
+                fallPetal linear forwards;
+        }
+
+
+        @keyframes fallPetal {
+
+            0% {
+
+                transform:
+                    translateY(-30px) rotate(0deg);
+
+                opacity: 0;
+            }
+
+            15% {
+
+                opacity: 0.75;
+            }
+
+            100% {
+
+                transform:
+                    translateY(110vh) rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =================================================
+           MAIN
+        ================================================= */
+
+        .main {
+
+            position: relative;
+
+            z-index: 5;
+
+            width: 100%;
+
+            height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            overflow: hidden;
+        }
+
+
+        /* =================================================
+           START SCREEN
+        ================================================= */
+
+        .start-screen {
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            padding: 30px;
+
+            z-index: 10;
+        }
+
+
+        .tiny-title {
+
+            font-family:
+                "Montserrat",
+                sans-serif;
+
+            font-size: 11px;
+
+            letter-spacing: 4px;
+
+            color:
+                rgba(255, 228, 234, 0.75);
+
+            margin-bottom: 20px;
+
+            text-transform: uppercase;
+        }
+
+
+        .start-heart {
+
+            font-size: 62px;
+
+            margin-bottom: 15px;
+
+            filter:
+                drop-shadow(0 0 20px rgba(255, 80, 130, 0.38));
+
+            animation:
+                heartbeat 1.7s ease-in-out infinite;
+        }
+
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform:
+                    scale(1);
+            }
+
+            50% {
+                transform:
+                    scale(1.12);
+            }
+        }
+
+
+        .start-title {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(31px, 8vw, 44px);
+
+            color:
+                #fff1f5;
+
+            line-height: 1.2;
+
+            margin-bottom: 12px;
+
+            text-shadow:
+                0 5px 25px rgba(0, 0, 0, 0.20);
+        }
+
+
+        .start-subtitle {
+
+            color:
+                rgba(255, 229, 237, 0.78);
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 19px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =================================================
+           START BUTTON
+        ================================================= */
+
+        .start-btn {
+
+            border: none;
+
+            padding:
+                14px 34px;
+
+            border-radius: 50px;
+
+            cursor: pointer;
+
+            color: white;
+
+            font-family:
+                "Montserrat",
+                sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            background:
+
+                linear-gradient(135deg,
+                    #f05b89,
+                    #c53e7c);
+
+            box-shadow:
+
+                0 10px 30px rgba(210, 50, 115, 0.28),
+
+                0 0 25px rgba(255, 90, 145, 0.15);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .start-btn:hover {
+
+            transform:
+                translateY(-3px) scale(1.03);
+
+            box-shadow:
+
+                0 15px 35px rgba(210, 50, 115, 0.38);
+        }
+
+
+        /* =================================================
+           POEM SCREEN
+        ================================================= */
+
+        .poem-screen {
+
+            position: absolute;
+
+            inset: 0;
+
+            display: none;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            padding:
+                25px 20px;
+
+            z-index: 9;
+        }
+
+
+        .poem-screen.show {
+
+            display: flex;
+
+            animation:
+                screenIn .9s ease;
+        }
+
+
+        @keyframes screenIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    scale(.97);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    scale(1);
+            }
+        }
+
+
+        /* =================================================
+           POEM HEADER
+        ================================================= */
+
+        .poem-label {
+
+            font-family:
+                "Montserrat",
+                sans-serif;
+
+            font-size: 10px;
+
+            letter-spacing: 4px;
+
+            color:
+                rgba(255, 218, 229, 0.72);
+
+            margin-bottom: 13px;
+
+            text-transform: uppercase;
+        }
+
+
+        .rose-icon {
+
+            font-size: 32px;
+
+            margin-bottom: 13px;
+
+            filter:
+                drop-shadow(0 0 13px rgba(255, 65, 100, .25));
+        }
+
+
+        /* =================================================
+           POEM
+           NO BOX
+        ================================================= */
+
+        .poem {
+
+            width: 100%;
+
+            max-width: 480px;
+
+            font-family:
+                "Noto Serif Tamil",
+                serif;
+
+            color:
+                #fff0f4;
+
+            font-size:
+                clamp(17px, 4.4vw, 21px);
+
+            font-weight: 500;
+
+            line-height: 1.9;
+
+            text-shadow:
+
+                0 3px 12px rgba(0, 0, 0, .22),
+
+                0 0 18px rgba(255, 180, 205, .08);
+        }
+
+
+        .poem-line {
+
+            display: block;
+
+            opacity: 0;
+
+            transform:
+                translateY(14px);
+
+            animation:
+                poemLine .75s ease forwards;
+        }
+
+
+        .poem-line:nth-child(1) {
+            animation-delay: .2s;
+        }
+
+
+        .poem-line:nth-child(2) {
+            animation-delay: .7s;
+        }
+
+
+        .poem-line:nth-child(3) {
+            animation-delay: 1.2s;
+        }
+
+
+        .poem-line:nth-child(4) {
+            animation-delay: 1.7s;
+        }
+
+
+        .poem-line:nth-child(5) {
+            animation-delay: 2.2s;
+        }
+
+
+        .poem-line:nth-child(6) {
+            animation-delay: 2.7s;
+        }
+
+
+        @keyframes poemLine {
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =================================================
+           FINAL POEM LINE
+        ================================================= */
+
+        .poem-final {
+
+            color:
+                #ffd79b;
+
+            font-weight: 600;
+
+            text-shadow:
+
+                0 0 12px rgba(255, 202, 120, .22),
+
+                0 3px 15px rgba(0, 0, 0, .25);
+        }
+
+
+        /* =================================================
+           BUTTON AREA
+        ================================================= */
+
+        .button-area {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 11px;
+
+            margin-top: 22px;
+
+            width: 100%;
+
+            opacity: 0;
+
+            animation:
+                buttonsIn .8s ease forwards;
+
+            animation-delay: 3.7s;
+        }
+
+
+        @keyframes buttonsIn {
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        /* =================================================
+           ACTION BUTTON
+        ================================================= */
+
+        .action-btn {
+
+            width:
+                min(270px, 82vw);
+
+            padding:
+                12px 20px;
+
+            border-radius: 40px;
+
+            border:
+                1px solid rgba(255, 218, 229, .26);
+
+            cursor: pointer;
+
+            font-family:
+                "Montserrat",
+                sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 500;
+
+            letter-spacing: .7px;
+
+            color:
+                #fff0f5;
+
+            background:
+
+                linear-gradient(135deg,
+                    rgba(224, 79, 132, .28),
+                    rgba(142, 68, 154, .25));
+
+            box-shadow:
+
+                0 8px 25px rgba(0, 0, 0, .16),
+
+                inset 0 0 14px rgba(255, 210, 230, .035);
+
+            backdrop-filter:
+                blur(8px);
+
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                border-color .25s ease;
+        }
+
+
+        .action-btn:hover {
+
+            transform:
+                translateY(-3px);
+
+            background:
+
+                linear-gradient(135deg,
+                    rgba(238, 82, 137, .45),
+                    rgba(151, 73, 166, .40));
+
+            border-color:
+                rgba(255, 210, 230, .48);
+        }
+
+
+        .romantic-btn {
+
+            color:
+                #ffe1eb;
+        }
+
+
+        .video-btn {
+
+            color:
+                #eee2ff;
+        }
+
+
+        /* =================================================
+           CONFIRMATION OVERLAY
+        ================================================= */
+
+        .confirm-overlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            display: none;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 25px;
+
+            background:
+                rgba(35, 8, 29, .62);
+
+            backdrop-filter:
+                blur(12px);
+
+            z-index: 50;
+        }
+
+
+        .confirm-overlay.show {
+
+            display: flex;
+
+            animation:
+                overlayIn .35s ease;
+        }
+
+
+        @keyframes overlayIn {
+
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        /* =================================================
+           CONFIRM BOX
+        ================================================= */
+
+        .confirm-box {
+
+            width:
+                min(350px, 90vw);
+
+            padding:
+                30px 24px;
+
+            border-radius: 25px;
+
+            text-align: center;
+
+            background:
+
+                linear-gradient(145deg,
+                    #71304f,
+                    #482044);
+
+            border:
+                1px solid rgba(255, 216, 229, .28);
+
+            box-shadow:
+
+                0 25px 70px rgba(0, 0, 0, .42),
+
+                0 0 30px rgba(240, 80, 145, .13);
+        }
+
+
+        .confirm-heart {
+
+            font-size: 38px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .confirm-title {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            color:
+                #fff0f5;
+
+            font-size: 26px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .confirm-text {
+
+            color:
+                rgba(255, 224, 234, .80);
+
+            font-family:
+                "Noto Serif Tamil",
+                serif;
+
+            font-size: 14px;
+
+            margin-bottom: 23px;
+        }
+
+
+        .confirm-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+        }
+
+
+        .yes-btn,
+        .no-btn {
+
+            min-width: 105px;
+
+            padding:
+                11px 18px;
+
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            font-family:
+                "Montserrat",
+                sans-serif;
+
+            font-size: 12px;
+
+            border:
+                1px solid rgba(255, 255, 255, .16);
+        }
+
+
+        .yes-btn {
+
+            color: white;
+
+            background:
+
+                linear-gradient(135deg,
+                    #ee4e80,
+                    #bd356f);
+        }
+
+
+        .no-btn {
+
+            color:
+                #f7e4ec;
+
+            background:
+                rgba(255, 255, 255, .08);
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 500px) {
+
+            .poem-screen {
+
+                padding:
+                    20px 15px;
+            }
+
+
+            .poem {
+
+                font-size: 16px;
+
+                line-height: 1.9;
+            }
+
+
+            .poem-label {
+
+                margin-bottom: 8px;
+            }
+
+
+            .rose-icon {
+
+                font-size: 28px;
+
+                margin-bottom: 8px;
+            }
+
+
+            .button-area {
+
+                margin-top: 16px;
+
+                gap: 9px;
+            }
+
+
+            .action-btn {
+
+                padding:
+                    11px 16px;
+            }
+
+
+            .start-title {
+
+                font-size: 30px;
+            }
+
+
+            .start-subtitle {
+
+                font-size: 17px;
+            }
+        }
+
+
+        /* =================================================
+           SMALL HEIGHT PHONES
+        ================================================= */
+
+        @media (max-height: 650px) {
+
+            .poem {
+
+                font-size: 15px;
+
+                line-height: 1.72;
+            }
+
+
+            .poem-label {
+
+                margin-bottom: 5px;
+            }
+
+
+            .rose-icon {
+
+                margin-bottom: 3px;
+            }
+
+
+            .button-area {
+
+                margin-top: 10px;
+            }
+
+
+            .action-btn {
+
+                padding:
+                    9px 16px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         STARS
+    ================================================= -->
+
+    <div class="stars">
+
+        <span class="star" style="top:8%;left:12%;animation-delay:.3s">
+        </span>
+
+        <span class="star" style="top:14%;left:31%;animation-delay:1.2s">
+        </span>
+
+        <span class="star" style="top:9%;left:57%;animation-delay:2s">
+        </span>
+
+        <span class="star" style="top:20%;left:84%;animation-delay:.7s">
+        </span>
+
+        <span class="star" style="top:35%;left:8%;animation-delay:1.8s">
+        </span>
+
+        <span class="star" style="top:43%;left:92%;animation-delay:.4s">
+        </span>
+
+        <span class="star" style="top:67%;left:10%;animation-delay:2.1s">
+        </span>
+
+        <span class="star" style="top:75%;left:88%;animation-delay:1s">
+        </span>
+
+        <span class="star" style="top:88%;left:27%;animation-delay:1.5s">
+        </span>
+
+        <span class="star" style="top:82%;left:70%;animation-delay:.5s">
+        </span>
+
+    </div>
+
+
+    <!-- =================================================
+         MUSIC
+    ================================================= -->
+
+    <audio id="music" preload="auto" loop>
+
+        <source src="kavi.mpeg" type="audio/mpeg">
+
+    </audio>
+
+
+    <!-- =================================================
+         MAIN
+    ================================================= -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             START SCREEN
+        ================================================= -->
+
+        <section class="start-screen" id="startScreen">
+
+
+            <div class="tiny-title">
+                A LITTLE SOMETHING FOR YOU
+            </div>
+
+
+            <div class="start-heart">
+                🌹
+            </div>
+
+
+            <h2>Abinaya</h2>
+
+
+            <p class="start-subtitle">
+                There's something special waiting for you... ✨
+            </p>
+
+
+            <button class="start-btn" onclick="startExperience()">
+
+                Start Pannalama? 💖
+
+            </button>
+
+
+        </section>
+
+
+        <!-- =================================================
+             POEM SCREEN
+        ================================================= -->
+
+        <section class="poem-screen" id="poemScreen">
+
+
+            <div class="poem-label">
+                A LITTLE POEM FOR YOU
+            </div>
+
+
+            <div class="rose-icon">
+                🌹
+            </div>
+
+
+            <!-- POEM - NO BOX -->
+
+            <div class="poem">
+
+
+                <span class="poem-line">
+                    பூக்கள் கூட பொறாமைப்படும்<br>
+                    உன் அழகிய புன்னகையை கண்டு. அதை காண, 
+                </span>
+
+
+                <span class="poem-line">
+                    காத்திருக்கும் வண்ணத்துப்பூச்சிகளில்<br>
+                    ஒருவனாய் நான்… 🦋❤️
+                </span>
+
+
+                <span class="poem-line">
+                    கண்கள் மூடினாலும் உன் அழகு மறைவதில்லை…
+                </span>
+
+
+                <span class="poem-line">
+                    ஏனென்றால், நீ என் கண்களில் அல்ல,<br>
+                    என் இதயத்தில் இருக்கிறாய்… ❤️
+                </span>
+
+
+                <span class="poem-line poem-final">
+                    என் ரசனையில் நீ…<br>
+                    பேரழகி மட்டுமல்ல,<br>
+                    என் மனம் ரசிக்கத் தேர்ந்தெடுத்த<br>
+                    ஒரே அழகி. ❤️✨
+                </span>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 BUTTONS
+            ================================================= -->
+
+            <div class="button-area" id="buttonArea">
+
+
+                <button class="action-btn romantic-btn" onclick="showConfirmation()">
+
+                    💙Click For Special
+
+                </button>
+
+
+                <button class="action-btn video-btn" onclick="goToVideo()">
+
+                    Click For Video
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             ARE YOU SURE
+        ================================================= -->
+
+        <div class="confirm-overlay" id="confirmOverlay">
+
+
+            <div class="confirm-box">
+
+
+                <div class="confirm-heart">
+                    👀
+                </div>
+
+
+                <div class="confirm-title">
+                    Are You Sure?
+                </div>
+
+
+                <div class="confirm-text">
+                    Idhu konjam too romantic ah irukkalaam... ❤️‍🔥
+                </div>
+
+
+                <div class="confirm-buttons">
+
+
+                    <button class="yes-btn" onclick="goToRomantic()">
+
+                        Yes ❤️‍🔥
+
+                    </button>
+
+
+                    <button class="no-btn" onclick="closeConfirmation()">
+
+                        No 😌
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+    <script>
+
+
+        /* =================================================
+           START EXPERIENCE
+        ================================================= */
+
+        function startExperience() {
+
+            const music =
+                document.getElementById("music");
+
+
+            music.volume = 0.42;
+
+            music.currentTime = 0;
+
+
+            music.play().catch(function () {
+
+                console.log(
+                    "Browser blocked autoplay."
+                );
+
+            });
+
+
+            /* Hide start */
+
+            document
+                .getElementById("startScreen")
+                .style.display = "none";
+
+
+            /* Show poem */
+
+            document
+                .getElementById("poemScreen")
+                .classList.add("show");
+
+
+            /* Start petals */
+
+            startPetals();
+        }
+
+
+        /* =================================================
+           SHOW CONFIRMATION
+        ================================================= */
+
+        function showConfirmation() {
+
+            document
+                .getElementById("confirmOverlay")
+                .classList.add("show");
+        }
+
+
+        /* =================================================
+           NO
+        ================================================= */
+
+        function closeConfirmation() {
+
+            document
+                .getElementById("confirmOverlay")
+                .classList.remove("show");
+        }
+
+
+        /* =================================================
+           YES
+        ================================================= */
+
+        function goToRomantic() {
+
+            window.location.href =
+                "romantic.html";
+        }
+
+
+        /* =================================================
+           VIDEO
+        ================================================= */
+
+        function goToVideo() {
+
+            window.location.href =
+                "video.html";
+        }
+
+
+        /* =================================================
+           FALLING PETALS
+        ================================================= */
+
+        function startPetals() {
+
+            setInterval(function () {
+
+                const petal =
+                    document.createElement("div");
+
+
+                petal.className =
+                    "petal";
+
+
+                const symbols = [
+                    "🌸",
+                    "🌹",
+                    "✨",
+                    "💗"
+                ];
+
+
+                petal.innerHTML =
+                    symbols[
+                    Math.floor(
+                        Math.random()
+                        * symbols.length
+                    )
+                    ];
+
+
+                petal.style.left =
+                    Math.random() * 100
+                    + "vw";
+
+
+                petal.style.animationDuration =
+                    (6 + Math.random() * 5)
+                    + "s";
+
+
+                petal.style.fontSize =
+                    (10 + Math.random() * 10)
+                    + "px";
+
+
+                document.body.appendChild(
+                    petal
+                );
+
+
+                setTimeout(function () {
+
+                    petal.remove();
+
+                }, 12000);
+
+
+            }, 1200);
+        }
+
+    </script>
+
+</body>
+
+</html>
