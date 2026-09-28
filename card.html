@@ -57,11 +57,13 @@ body{
 .para.show{animation:fadeIn 1.1s ease forwards}
 @keyframes fadeIn{to{opacity:1;transform:translateY(0)}}
 .nav{
-  position:absolute;right:10px;bottom:10px;z-index:5;border:0;border-radius:999px;padding:9px 14px;color:#fff;
+  position:absolute;left:50%;right:auto;bottom:10px;z-index:5;
+  transform:translateX(-50%);
+  border:0;border-radius:999px;padding:9px 14px;color:#fff;
   background:linear-gradient(135deg,#a32e62,#762149);font-family:Georgia,serif;font-size:12px;font-weight:bold;
   box-shadow:0 6px 18px #7d234f55;cursor:pointer;
 }
-.nav.back{left:10px;right:auto}
+.nav.back{left:10px;right:auto;transform:none}
 @media(max-width:380px){
   .book{width:95vw;height:92vh}.page{padding:23px 17px 55px}.page-title{font-size:30px;margin-bottom:12px}
   .letter{font-size:12.4px;line-height:1.27}.para{margin-bottom:6px}
@@ -71,169 +73,169 @@ body{
   .letter{font-size:11.8px;line-height:1.22}.para{margin-bottom:5px}
 }
 </style>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-</head>
-<body>
-
-<div class="cover" id="cover">
-  <div class="cover-content">
-    <h1>For You, Abinaya</h1>
-    <p>A LITTLE LETTER FROM MY HEART</p>
-    <button class="open-btn" onclick="openCard()">Tap to Open 💌</button>
-  </div>
-</div>
-
-<div class="wrap" id="wrap">
-  <div class="book">
-
-    <section class="page page1" id="page1">
-      <h2 class="page-title">For You… 🌹</h2>
-      <div class="letter" id="text1"></div>
-      <button class="nav" onclick="nextPage()">Next Page ➜</button>
-    </section>
-
-    <section class="page page2" id="page2">
-      <h2 class="page-title">One More Thing… ❤️</h2>
-      <div class="letter" id="text2"></div>
-      <button class="nav back" onclick="prevPage()">← Back</button>
-    </section>
-
-  </div>
-</div>
-
-<audio id="bgMusic" preload="auto">
-  <source src="kavin.mp4" type="audio/mpeg">
-</audio>
-
-<script>
-/* PAGE 1 ends exactly at "And namma chat-la..." */
-const page1 = [
-`Unnoda ella kashtamum enakku theriyum diii…<br>
-Aana, ennala unna vittu poga thonala. ❤️`,
-
-`Nee annikku sonnala…<br>
-<strong>Naan unlucky girl</strong> nu.`,
-
-`Aana enakku nee kidaichadhu dhaan,<br>
-en life la kidaicha oru lucky thing diii. 🌹`,
-
-`Sila neram unakku,<br>
-Yaarume ennai purinjikala…<br>
-Yaarukkum ennai pudikkala…<br>
-nu thonalaam…`,
-
-`Aana,<br>
-unnoda feelings ah judge panna illa…<br>
-<strong>Unna crt panna kooda varala.</strong> 😂`,
-
-`Unnai purinjikkanum nu dhaan enakku aasai. ❤️<br>
-un kodave irukanum nu aasai🌹`,
-
-`Un happiness ah celebrate panna aasai 🤌🏻<br>
-Un sadness la konjam company kudukka aasai 🌹<br>
-And sometimes reason illama unna kalaaichitu irukkanum nu kooda aasai. 🤣❤️`,
-
-`Nee unlucky girl illa diii…<br><br>
-<strong>Enakku kidaicha lucky girl.</strong> ❤️`
-];
-
-const page2 = [
-`And namma chat la…`,
-
-`Kiss, romantic kavithai, love nu<br>
-enna ennamo pesuvom laa… 😂❤️`,
-
-`Aana real life la vandha…`,
-
-`<strong>Un permission illama,</strong><br>
-<strong>un nail a kooda cut panna maaten diii!</strong> 🤣💅🏻❤️`,
-
-`Chat la naan romba bold uh… 😌<br>
-Real life la mattum…<br><br>
-<strong>Madam… permission please?</strong> 😂<br><br>
-nu nikkira type. 🤣❤️`,
-
-`So, indha romantic kavidhai ku<br>
-<strong>idhu dhaan enoda cute aana reply.</strong> ❤️🌹`,
-
-`So Abii Kutty…`,
-
-`Nee unlucky girl illa.`,
-
-`<strong>Nee konjam lucky…</strong><br>
-<strong>becz you got me.</strong> 😌❤️`,
-
-`And naanum konjam lucky…`,
-
-`<strong>becz I got you.<br>
-  And<br>
-  Happy Many More Returs Of The Day Abiii🌹<br>
-  song nalla iruntha kettutu tu chat ku vaa</strong> 🌹🫶🏻`
-];
-
-function build(id,data){
-  const box=document.getElementById(id);
-  data.forEach(t=>{
-    const p=document.createElement("div");
-    p.className="para";
-    p.innerHTML=t;
-    box.appendChild(p);
-  });
-}
-
-function reveal(id){
-  document.querySelectorAll("#"+id+" .para").forEach((p,i)=>{
-    setTimeout(()=>p.classList.add("show"),i*400);
-  });
-}
-
-emailjs.init({
-  publicKey: "HNtEDz6fJXOXCVcZm"
-});
-
-let emailSent = false;
-
-function sendOpenNotification(){
-  if(emailSent) return;
-  emailSent = true;
-
-  emailjs.send(
-    "service_ix3cdj5",
-    "template_q0bovgf",
-    {}
-  ).catch((error)=>{
-    console.error("EmailJS:", error);
-    emailSent = false;
-  });
-}
-
-function openCard(){
-  document.getElementById("cover").classList.add("hide");
-  document.getElementById("wrap").classList.add("show");
-
-  const music=document.getElementById("bgMusic");
-  music.volume=.17;
-  music.currentTime=0;
-  music.play().catch(()=>{});
-
-  sendOpenNotification();
-
-  setTimeout(()=>reveal("text1"),150);
-}
-
-function nextPage(){
-  document.getElementById("page1").classList.add("flip");
-  document.getElementById("page2").classList.add("show");
-  setTimeout(()=>reveal("text2"),450);
-}
-
-function prevPage(){
-  document.getElementById("page2").classList.remove("show");
-  document.getElementById("page1").classList.remove("flip");
-}
-
-build("text1",page1);
-build("text2",page2);
-</script>
-</body>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script> 
+</head> 
+<body> 
+ 
+<div class="cover" id="cover"> 
+  <div class="cover-content"> 
+    <h1>For You, Abinaya</h1> 
+    <p>A LITTLE LETTER FROM MY HEART</p> 
+    <button class="open-btn" onclick="openCard()">Tap to Open 💌</button> 
+  </div> 
+</div> 
+ 
+<div class="wrap" id="wrap"> 
+  <div class="book"> 
+ 
+    <section class="page page1" id="page1"> 
+      <h2 class="page-title">For You… 🌹</h2> 
+      <div class="letter" id="text1"></div> 
+      <button class="nav" onclick="nextPage()">Next Page ➜</button> 
+    </section> 
+ 
+    <section class="page page2" id="page2"> 
+      <h2 class="page-title">One More Thing… ❤️</h2> 
+      <div class="letter" id="text2"></div> 
+      <button class="nav back" onclick="prevPage()">← Back</button> 
+    </section> 
+ 
+  </div> 
+</div> 
+ 
+<audio id="bgMusic" preload="auto"> 
+  <source src="kavin.mp4" type="audio/mpeg"> 
+</audio> 
+ 
+<script> 
+/* PAGE 1 ends exactly at "And namma chat-la..." */ 
+const page1 = [ 
+`Unnoda ella kashtamum enakku theriyum diii…<br> 
+Aana, ennala unna vittu poga thonala. ❤️`, 
+ 
+`Nee annikku sonnala…<br> 
+<strong>Naan unlucky girl</strong> nu.`, 
+ 
+`Aana enakku nee kidaichadhu dhaan,<br> 
+en life la kidaicha oru lucky thing diii. 🌹`, 
+ 
+`Sila neram unakku,<br> 
+Yaarume ennai purinjikala…<br> 
+Yaarukkum ennai pudikkala…<br> 
+nu thonalaam…`, 
+ 
+`Aana,<br> 
+unnoda feelings ah judge panna illa…<br> 
+<strong>Unna crt panna kooda varala.</strong> 😂`, 
+ 
+`Unnai purinjikkanum nu dhaan enakku aasai. ❤️<br> 
+un kodave irukanum nu aasai🌹`, 
+ 
+`Un happiness ah celebrate panna aasai 🤌🏻<br> 
+Un sadness la konjam company kudukka aasai 🌹<br> 
+And sometimes reason illama unna kalaaichitu irukkanum nu kooda aasai. 🤣❤️`, 
+ 
+`Nee unlucky girl illa diii…<br><br> 
+<strong>Enakku kidaicha lucky girl.</strong> ❤️` 
+]; 
+ 
+const page2 = [ 
+`And namma chat la…`, 
+ 
+`Kiss, romantic kavithai, love nu<br> 
+enna ennamo pesuvom laa… 😂❤️`, 
+ 
+`Aana real life la vandha…`, 
+ 
+`<strong>Un permission illama,</strong><br> 
+<strong>un nail a kooda cut panna maaten diii!</strong> 🤣💅🏻❤️`, 
+ 
+`Chat la naan romba bold uh… 😌<br> 
+Real life la mattum…<br><br> 
+<strong>Madam… permission please?</strong> 😂<br><br> 
+nu nikkira type. 🤣❤️`, 
+ 
+`So, indha romantic kavidhai ku<br> 
+<strong>idhu dhaan enoda cute aana reply.</strong> ❤️🌹`, 
+ 
+`So Abii Kutty…`, 
+ 
+`Nee unlucky girl illa.`, 
+ 
+`<strong>Nee konjam lucky…</strong><br> 
+<strong>becz you got me.</strong> 😌❤️`, 
+ 
+`And naanum konjam lucky…`, 
+ 
+`<strong>becz I got you.<br> 
+  And<br> 
+  Happy Many More Returns Of The Day Abiii🌹<br> 
+  song nalla iruntha kettutu tu chat ku vaa</strong> 🌹🫶🏻` 
+]; 
+ 
+function build(id,data){ 
+  const box=document.getElementById(id); 
+  data.forEach(t=>{ 
+    const p=document.createElement("div"); 
+    p.className="para"; 
+    p.innerHTML=t; 
+    box.appendChild(p); 
+  }); 
+} 
+ 
+function reveal(id){ 
+  document.querySelectorAll("#"+id+" .para").forEach((p,i)=>{ 
+    setTimeout(()=>p.classList.add("show"),i*400); 
+  }); 
+} 
+ 
+emailjs.init({ 
+  publicKey: "HNtEDz6fJXOXCVcZm" 
+}); 
+ 
+let emailSent = false; 
+ 
+function sendOpenNotification(){ 
+  if(emailSent) return; 
+  emailSent = true; 
+ 
+  emailjs.send( 
+    "service_ix3cdj5", 
+    "template_q0bovgf", 
+    {} 
+  ).catch((error)=>{ 
+    console.error("EmailJS:", error); 
+    emailSent = false; 
+  }); 
+} 
+ 
+function openCard(){ 
+  document.getElementById("cover").classList.add("hide"); 
+  document.getElementById("wrap").classList.add("show"); 
+ 
+  const music=document.getElementById("bgMusic"); 
+  music.volume=.17; 
+  music.currentTime=0; 
+  music.play().catch(()=>{}); 
+ 
+  sendOpenNotification(); 
+ 
+  setTimeout(()=>reveal("text1"),150); 
+} 
+ 
+function nextPage(){ 
+  document.getElementById("page1").classList.add("flip"); 
+  document.getElementById("page2").classList.add("show"); 
+  setTimeout(()=>reveal("text2"),450); 
+} 
+ 
+function prevPage(){ 
+  document.getElementById("page2").classList.remove("show"); 
+  document.getElementById("page1").classList.remove("flip"); 
+} 
+ 
+build("text1",page1); 
+build("text2",page2); 
+</script> 
+</body> 
 </html>
