@@ -289,6 +289,64 @@
     }
 
 
+
+    /* =========================
+       READY SCREEN
+    ========================= */
+
+    .ready-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      background: linear-gradient(135deg, #6d274f 0%, #83335c 35%, #77304f 65%, #5f2949 100%);
+      transition: opacity 0.7s ease, visibility 0.7s ease;
+    }
+
+    .ready-screen.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .ready-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      color: rgba(255, 248, 248, 0.96);
+      margin-bottom: 10px;
+    }
+
+    .ready-subtitle {
+      font-family: "Montserrat", sans-serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: rgba(255, 235, 235, 0.72);
+      margin-bottom: 24px;
+    }
+
+    .ready-btn {
+      border: 1px solid rgba(255, 220, 220, 0.35);
+      border-radius: 40px;
+      padding: 13px 30px;
+      background: rgba(255, 255, 255, 0.10);
+      color: rgba(255, 248, 248, 0.98);
+      font-family: "Montserrat", sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 8px 25px rgba(40, 5, 25, 0.18);
+      cursor: pointer;
+    }
+
+    .ready-btn:active {
+      transform: scale(0.97);
+    }
+
     /* =========================
        MAIN PAGE
     ========================= */
@@ -420,6 +478,7 @@
 
       animation:
         lineIn 0.9s ease forwards;
+      animation-play-state: paused;
 
       text-shadow:
         0 2px 15px
@@ -673,6 +732,12 @@
 <body>
 
 
+  <!-- READY SCREEN -->
+
+  <div class="ready-screen" id="readyScreen">
+    <button class="ready-btn" onclick="startRomantic()">Ready ah? 💙</button>
+  </div>
+
   <!-- STARS -->
 
   <div class="stars">
@@ -706,6 +771,8 @@
 
   <audio
     id="music"
+    autoplay
+    playsinline
     loop
     preload="auto">
 
@@ -792,74 +859,25 @@
     const music =
       document.getElementById("music");
 
-
-    /* =========================
-       AUTOMATIC MUSIC
-    ========================= */
-
-    function startMusic() {
+    function startRomantic() {
+      const readyScreen = document.getElementById("readyScreen");
 
       music.volume = 0.42;
+      music.currentTime = 0;
 
       music.play().catch(() => {
-        console.log(
-          "Autoplay blocked. Waiting for user interaction."
-        );
+        console.log("Audio could not start.");
       });
 
+      readyScreen.classList.add("hide");
+
+      document.querySelectorAll(".line").forEach((line) => {
+        line.style.animationPlayState = "running";
+      });
     }
 
 
-    /* =========================
-       FIRST CLICK
-       Automatically starts music
-    ========================= */
-
-    document.addEventListener(
-      "click",
-      function firstInteraction() {
-
-        if (music.paused) {
-
-          music.volume = 0.42;
-
-          music.play().catch(() => {});
-
-        }
-
-      },
-      { once: true }
-    );
-
-
-    /* =========================
-       FIRST TOUCH
-       Automatically starts music
-    ========================= */
-
-    document.addEventListener(
-      "touchstart",
-      function firstTouch() {
-
-        if (music.paused) {
-
-          music.volume = 0.42;
-
-          music.play().catch(() => {});
-
-        }
-
-      },
-      { once: true }
-    );
-
-
-    /* Try autoplay */
-
-    window.addEventListener(
-      "load",
-      startMusic
-    );
+    /* Music starts only after the Ready button is clicked. */
 
   </script>
 
